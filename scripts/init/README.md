@@ -1,4 +1,8 @@
 # Initialization file for colab notebooks
+## Testing
+This was tested here: https://colab.research.google.com/drive/17NIFK9AXmX9X3ieSiJrWegawtkER2WxV?usp=sharing
+
+## Guide
 Put the following code block at the beginning of your notebook to get the data:
 ```
 !wget -nc -q --show-progress "https://raw.githubusercontent.com/knekvasil/T34-P12/refs/heads/main/data/original/activity_log_A(in).csv"
