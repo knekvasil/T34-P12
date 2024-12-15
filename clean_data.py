@@ -22,7 +22,9 @@ def run_grades_consolidation(input_dir="data/original", output_dir="data/new"):
         )
 
 
-def run_activity_consolidation(input_dir="data/original", output_dir="data/new"):
+def run_activity_consolidation(
+    input_dir="data/original", output_dir="data/new", grades_file_name="grades.csv"
+):
     """Run activity log consolidation for all activity-related CSVs."""
     files = [
         f
@@ -33,7 +35,7 @@ def run_activity_consolidation(input_dir="data/original", output_dir="data/new")
         input_file = os.path.join(input_dir, file_name)
         output_file = os.path.join(output_dir, file_name)
         print(f"Processing {file_name} with activity consolidator...")
-        consolidate_activity(input_file, output_file)
+        consolidate_activity(input_file, output_file, grades_file_name)
         print(
             f"Activity consolidation complete for {file_name}. Output saved to {output_file}"
         )
@@ -86,7 +88,7 @@ def run_all_consolidations(consolidation_type="both", merge=False):
         if merge:
             merge_csvs(output_dir, merge_type="grades")
     elif consolidation_type == "activity":
-        run_activity_consolidation(input_dir, output_dir)
+        run_activity_consolidation(input_dir, output_dir, "data/new/grades.csv")
         if merge:
             merge_csvs(output_dir, merge_type="activity_log")
     elif consolidation_type == "both":
